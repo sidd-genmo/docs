@@ -51,11 +51,7 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": [
-        "introduction",
-        "quickstart",
-        "development"
-      ]
+      "pages": ["introduction", "quickstart", "development"]
     },
     {
       "group": "Essentials",
@@ -71,7 +67,14 @@
     {
       "group": "API Documentation",
       "pages": [
-        "api-reference/introduction"
+        "api-reference/index",
+        {
+          "group": "Endpoints",
+          "pages": [
+            "api-reference/endpoints/create",
+            "api-reference/endpoints/status"
+          ]
+        }
       ]
     },
     {
@@ -87,5 +90,6 @@
     "twitter": "https://twitter.com/mintlify",
     "github": "https://github.com/mintlify",
     "linkedin": "https://www.linkedin.com/company/mintsearch"
-  }
+  },
+  "openapi": "./api-reference/openapi.json"
 }
