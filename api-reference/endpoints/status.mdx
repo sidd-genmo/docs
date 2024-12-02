@@ -1,0 +1,65 @@
+---
+title: "Get Generation Status"
+openapi: "GET /status/{taskId}"
+description: "Check the status of a video generation task"
+---
+
+## Usage Example
+
+```bash
+curl -X GET https://api.genmo.ai/status/task_abc123 \
+  -H "Authorization: YOUR_API_KEY"
+```
+
+## Parameters
+
+<ParamField path="taskId" type="string" required>
+  The ID of the task to check
+</ParamField>
+
+## Response
+
+<ResponseField name="id" type="string">
+  Task ID
+</ResponseField>
+
+<ResponseField name="status" type="string">
+  Current status of the task. One of: "pending", "processing", "completed",
+  "failed", "moderated"
+</ResponseField>
+
+<ResponseField name="progress" type="number">
+  Progress of the generation (0-1)
+</ResponseField>
+
+<ResponseField name="resultUrl" type="string">
+  URL of the generated video (when completed)
+</ResponseField>
+
+<ResponseField name="error" type="string">
+  Error message if the task failed
+</ResponseField>
+
+<ResponseField name="lastStatusAt" type="string">
+  Timestamp of the last status update
+</ResponseField>
+
+### Example Response
+
+```json
+{
+  "id": "task_abc123",
+  "status": "processing",
+  "progress": 0.5,
+  "resultUrl": "https://storage.genmo.ai/videos/abc123.mp4",
+  "lastStatusAt": "2024-03-20T10:30:00Z"
+}
+```
+
+## Error Responses
+
+| Status Code | Description                     |
+| ----------- | ------------------------------- |
+| 404         | Task not found                  |
+| 500         | Internal server error           |
+| 503         | Service temporarily unavailable |

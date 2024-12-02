@@ -1,0 +1,78 @@
+---
+title: "Create Video Generation"
+openapi: "POST /create"
+description: "Create a new video generation task"
+---
+
+## Usage Examples
+
+### Basic Video Generation
+
+```bash
+curl -X POST https://api.genmo.ai/create \
+  -H "Authorization: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "prompt": "A serene lake at sunset with mountains in the background",
+    "model": "standard"
+  }'
+```
+
+### Using Mochi Model
+
+```bash
+curl -X POST https://api.genmo.ai/create \
+  -H "Authorization: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "prompt": "A serene lake at sunset with mountains in the background",
+    "model": "mochi",
+    "webhookUrl": "https://api.example.com/webhook"
+  }'
+```
+
+## Request Body Parameters
+
+<ParamField body="prompt" type="string" required>
+  Text description of the video you want to generate
+</ParamField>
+
+<ParamField body="model" type="string" default="standard">
+  Model to use for generation: "standard" or "mochi"
+</ParamField>
+
+<ParamField body="webhookUrl" type="string">
+  Optional URL to receive generation status updates
+</ParamField>
+
+## Response
+
+<ResponseField name="taskId" type="string">
+  Unique identifier for the generation task
+</ResponseField>
+
+<ResponseField name="statusUrl" type="string">
+  URL to check the generation status
+</ResponseField>
+
+<ResponseField name="text" type="string">
+  Human readable status message
+</ResponseField>
+
+### Example Response
+
+```json
+{
+  "taskId": "task_abc123",
+  "statusUrl": "https://api.genmo.ai/v1/tasks/task_abc123",
+  "text": "Video generation started successfully"
+}
+```
+
+## Error Responses
+
+| Status Code | Description                |
+| ----------- | -------------------------- |
+| 400         | Invalid request parameters |
+| 401         | Invalid or missing API key |
+| 500         | Internal server error      |
