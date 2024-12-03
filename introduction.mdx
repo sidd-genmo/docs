@@ -10,7 +10,7 @@ Welcome to Genmo's API documentation. Our API enables you to generate high-quali
 ## Key Features
 
 - Text-to-video generation using advanced AI models
-- Two specialized models: Standard and Mochi
+- Two specialized models: Replay and Mochi (default)
 - Real-time status updates via webhooks
 - Simple REST API interface
 
@@ -41,7 +41,7 @@ curl -X POST https://api.genmo.ai/create \
   -H "Content-Type: application/json" \
   -d '{
     "prompt": "A serene lake at sunset with mountains in the background",
-    "model": "standard"
+    "model": "mochi"
   }'
 ```
 
@@ -50,11 +50,11 @@ curl -X POST https://api.genmo.ai/create \
 Genmo offers two specialized models for video generation:
 
 <CardGroup cols={2}>
-  <Card title="Standard" icon="video">
+  <Card title="Replay" icon="video">
     Optimized for general-purpose video generation with balanced quality and
     speed
   </Card>
   <Card title="Mochi" icon="wand-magic-sparkles">
-    Advanced model with enhanced quality and fine-grained control options
+    Our default model with enhanced quality and fine-grained control options
   </Card>
 </CardGroup>
