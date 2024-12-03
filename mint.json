@@ -51,9 +51,9 @@
     }
   ],
   "footerSocials": {
-    "twitter": "https://twitter.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
+    "twitter": "https://x.com/genmoai",
+    "github": "https://github.com/genmoai",
+    "linkedin": "https://linkedin.com/company/genmoai/"
   },
-  "openapi": "./api-reference/openapi.json"
+  "openapi": "./api-reference/openapi.documented.json"
 }
