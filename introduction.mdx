@@ -1,0 +1,60 @@
+---
+title: "Introduction"
+description: "Welcome to the Genmo Video Generation API documentation"
+---
+
+# Genmo Video Generation API
+
+Welcome to Genmo's API documentation. Our API enables you to generate high-quality videos from text descriptions using state-of-the-art AI models.
+
+## Key Features
+
+- Text-to-video generation using advanced AI models
+- Two specialized models: Standard and Mochi
+- Real-time status updates via webhooks
+- Simple REST API interface
+
+## Getting Started
+
+To start using the Genmo API, you'll need:
+
+1. An API key for authentication
+2. A text prompt describing your desired video
+3. A webhook URL (optional) to receive status updates
+
+<CardGroup cols={2}>
+  <Card title="API Reference" icon="code" href="/api-reference">
+    Explore our API endpoints and start generating videos
+  </Card>
+  <Card title="Quickstart Guide" icon="rocket" href="/quickstart">
+    Learn how to make your first API call in minutes
+  </Card>
+</CardGroup>
+
+## Example Usage
+
+Here's a simple example of generating a video:
+
+```bash
+curl -X POST https://api.genmo.ai/create \
+  -H "Authorization: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "prompt": "A serene lake at sunset with mountains in the background",
+    "model": "standard"
+  }'
+```
+
+## Models
+
+Genmo offers two specialized models for video generation:
+
+<CardGroup cols={2}>
+  <Card title="Standard" icon="video">
+    Optimized for general-purpose video generation with balanced quality and
+    speed
+  </Card>
+  <Card title="Mochi" icon="wand-magic-sparkles">
+    Advanced model with enhanced quality and fine-grained control options
+  </Card>
+</CardGroup>

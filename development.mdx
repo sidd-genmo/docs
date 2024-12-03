@@ -1,0 +1,78 @@
+---
+title: "Development Guide"
+description: "Learn how to integrate with the Genmo API"
+---
+
+# Development Guide
+
+## API Base URL
+
+All API requests should be made to:
+
+```bash
+https://api.genmo.ai
+```
+
+## Authentication
+
+Include your API key in all requests:
+
+```bash
+Authorization: YOUR_API_KEY
+```
+
+## Error Handling
+
+The API uses standard HTTP status codes and returns detailed error messages:
+
+```json
+{
+  "error": "invalid_prompt",
+  "errorMessage": "Prompt cannot be empty"
+}
+```
+
+Common status codes:
+
+| Status Code | Description                |
+| ----------- | -------------------------- |
+| 400         | Invalid request parameters |
+| 401         | Invalid or missing API key |
+| 404         | Resource not found         |
+| 500         | Internal server error      |
+
+## Webhook Integration
+
+### 1. Set Up Your Webhook Endpoint
+
+Create an endpoint that accepts POST requests with this payload structure:
+
+```json
+{
+  "taskId": "task_abc123",
+  "status": "processing",
+  "progress": 0.5,
+  "resultUrl": null,
+  "error": null,
+  "lastStatusAt": "2024-03-20T10:30:00Z"
+}
+```
+
+### 2. Include Webhook URL
+
+Add your webhook URL when creating generation tasks:
+
+```bash
+curl -X POST https://api.genmo.ai/create \
+  -H "Authorization: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "prompt": "Your prompt here",
+    "model": "standard",
+    "webhookUrl": "https://your-domain.com/webhook"
+  }'
+```
+
+## Rate Limits
+
+Please contact support for information about rate limits for your API key.

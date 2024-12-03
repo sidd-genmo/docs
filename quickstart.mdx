@@ -1,0 +1,73 @@
+---
+title: "Quickstart"
+description: "Start generating videos in minutes"
+---
+
+# Quickstart Guide
+
+Follow these steps to start generating videos with the Genmo API.
+
+## Authentication
+
+All API requests require an API key. Include it in the `Authorization` header:
+
+```bash
+Authorization: YOUR_API_KEY
+```
+
+## Making Your First Request
+
+### 1. Create a Video Generation Task
+
+Send a POST request to the `/create` endpoint:
+
+```bash
+curl -X POST https://api.genmo.ai/create \
+  -H "Authorization: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "prompt": "A serene lake at sunset with mountains in the background",
+    "model": "standard"
+  }'
+```
+
+### 2. Check Generation Status
+
+Use the returned `taskId` to check the status:
+
+```bash
+curl -X GET https://api.genmo.ai/status/task_abc123 \
+  -H "Authorization: YOUR_API_KEY"
+```
+
+### 3. Handle the Result
+
+When the status shows "completed", you can access your video at the provided `resultUrl`.
+
+## Using Webhooks
+
+To receive automatic updates, include a `webhookUrl` in your generation request:
+
+```bash
+curl -X POST https://api.genmo.ai/create \
+  -H "Authorization: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "prompt": "A serene lake at sunset with mountains in the background",
+    "model": "standard",
+    "webhookUrl": "https://your-domain.com/webhook"
+  }'
+```
+
+Your webhook endpoint will receive status updates as the generation progresses.
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="API Reference" icon="code" href="/api-reference">
+    Explore detailed API documentation
+  </Card>
+  <Card title="Model Options" icon="wand-magic-sparkles" href="/models">
+    Learn about our different models
+  </Card>
+</CardGroup>

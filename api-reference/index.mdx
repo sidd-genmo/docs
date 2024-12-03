@@ -1,0 +1,65 @@
+---
+title: "API Reference"
+description: "Reference documentation for the Genmo Video Generation API"
+---
+
+# Genmo API Reference
+
+Welcome to the Genmo API reference documentation. Our API enables video generation and processing through simple REST endpoints.
+
+## Authentication
+
+All API endpoints require authentication using an API key. Include your API key in the `Authorization` header of all requests:
+
+```bash
+Authorization: YOUR_API_KEY
+```
+
+## Base URL
+
+```bash
+https://api.genmo.ai
+```
+
+## Models
+
+Genmo offers two video generation models:
+
+- **standard**: Our default model, optimized for general-purpose video generation
+- **mochi**: Advanced model with enhanced quality and control options
+
+## Available Endpoints
+
+<CardGroup>
+  <Card
+    title="Create Video Generation"
+    icon="video"
+    href="/api-reference/endpoints/create"
+  >
+    Start a new video generation task using either standard or Mochi model
+  </Card>
+  <Card
+    title="Check Generation Status"
+    icon="clock"
+    href="/api-reference/endpoints/status"
+  >
+    Monitor the progress of your generation tasks
+  </Card>
+</CardGroup>
+
+## Webhooks
+
+You can provide a `webhookUrl` when creating a generation task to receive status updates. We'll send a POST request to your webhook URL whenever the task status changes.
+
+### Webhook Payload
+
+```json
+{
+  "taskId": "task_abc123",
+  "status": "processing",
+  "progress": 0.5,
+  "resultUrl": null,
+  "error": null,
+  "lastStatusAt": "2024-03-20T10:30:00Z"
+}
+```
